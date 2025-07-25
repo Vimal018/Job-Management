@@ -94,7 +94,7 @@ export default function CreateJobPage() {
             {/* Job Type */}
             <div>
               <label className="block text-sm font-medium mb-1">Job Type</label>
-              <Select onValueChange={(val) => setValue("jobType", val as any)}>
+              <Select onValueChange={(val) => setValue("jobType", val as any, { shouldValidate: true })}>
                 <SelectTrigger className="focus-visible:outline-black">
                   <SelectValue placeholder="FullTime" />
                 </SelectTrigger>

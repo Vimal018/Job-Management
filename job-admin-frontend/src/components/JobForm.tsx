@@ -27,7 +27,6 @@ export default function JobForm({ onSubmit }: JobFormProps) {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
     reset,
   } = useForm<JobFormData>({
     resolver: zodResolver(jobFormSchema),
@@ -83,7 +82,7 @@ export default function JobForm({ onSubmit }: JobFormProps) {
   {/* Job Type */}
   <div className="w-full">
     <label className="block text-sm font-medium text-gray-600 mb-1">Job Type</label>
-    <Select onValueChange={(val) => setValue("jobType", val as any)}>
+    <Select onValueChange={(val) => setValue("jobType", val as any, { shouldValidate: true })}>
       <SelectTrigger className="w-full border border-gray-300 text-black placeholder:text-gray-400">
         <SelectValue placeholder="Select Job Type" />
       </SelectTrigger>

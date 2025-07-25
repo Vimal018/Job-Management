@@ -3,28 +3,29 @@ import {
   Briefcase,
   MapPin,
   Layers,
-  Clock,
   User2,
 } from "lucide-react";
 
-interface Job {
-  id: string;
-  title: string;
-  company: string;
-  location: string;
-  jobType?: string;
-  salaryRange?: string; // stored like "₹500000 - ₹700000"
-  description?: string;
-  applicationDeadline?: string;
-  requirements?: string;
-  responsibilities?: string;
-  logo?: string;
-  experience?: string;
-  createdAt?: string;
-}
+
 
 interface JobCardProps {
-  job: any;
+  job: any | {
+    id: string  | number
+    title: string
+    companyLogo: string
+    company: string
+    experience: string
+    type: string
+    location: string
+    salaryRange: string
+    description: string
+    requirements: string
+    responsibilities: string
+    createdAt: string
+    logo?: string
+    applicationDeadline: string
+    salaryMin: number
+    salaryMax: number};
 }
 
 const timeAgo = (createdAt: string) => {
