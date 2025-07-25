@@ -18,6 +18,8 @@ type JobFormData = z.infer<typeof jobFormSchema> & {
   salaryRange?: string; // Add this to handle the actual API response
 };
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function LandingPage() {
   const [showForm, setShowForm] = useState(false);
   const [jobs, setJobs] = useState<JobFormData[]>([]);
@@ -25,7 +27,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3001/jobs")
+    fetch(`${API_BASE_URL}/jobs`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
@@ -42,7 +44,7 @@ export default function LandingPage() {
 
   const handleJobSubmit = async (data: JobFormData) => {
     try {
-      const response = await fetch("http://localhost:3001/jobs", {
+      const response = await fetch(`${API_BASE_URL}/jobs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, isPublished: true }),

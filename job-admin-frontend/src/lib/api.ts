@@ -2,7 +2,7 @@ import axios from "axios";
 import { Job } from "@/types/job";
 
 // Your backend API base URL
-const API_BASE_URL = "http://localhost:3000"; // Update this if deployed
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 // Get all jobs
 export const fetchJobs = async (): Promise<Job[]> => {
