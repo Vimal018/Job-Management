@@ -175,89 +175,83 @@ export default function LandingPage() {
     setFilteredJobs(filtered);
   };
 
-  return (
-    <div className="bg-white min-h-screen">
-    <div className="flex justify-center items-center py-6">
-  <header className="bg-white-50 shadow-md rounded-full w-full max-w-4xl flex items-center px-6 py-3">
-    
-    {/* Logo */}
-    <div className="w-1/6 flex justify-start items-center">
-      <img src="/image.png" alt="Logo" className="h-10 w-auto" />
-    </div>
+return (
+  <div className="bg-white min-h-screen">
+    {/* Header */}
+    <header className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4 flex-wrap gap-4">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <img src="/image.png" alt="Logo" className="h-10 w-auto" />
+        </div>
 
-    {/* Navigation */}
-<nav className="w-1/2 flex justify-center items-center space-x-2">
-  {["Home", "Find Jobs", "Find Talents", "About us", "Testimonials"].map((item) => (
-    <button
-      key={item}
-      className="group relative px-5 py-2 font-medium text-gray-800 whitespace-nowrap transition-all duration-300"
-    >
-      {/* Hover background drop-down */}
-      <span className="absolute inset-0 z-0 translate-y-[-6px] scale-95 opacity-0 rounded-xl bg-white shadow-lg transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"></span>
-
-      {/* Text follows hover drop */}
-      <span className="relative z-10 transition-all duration-300 ease-out group-hover:translate-y-1 group-hover:text-black">
-        {item}
-      </span>
-    </button>
-  ))}
-</nav>
-
-
-
-    {/* Create Job Button */}
-    <div className="w-1/3 flex justify-end">
-      <button
-        onClick={() => setShowForm(true)}
-        className="bg-purple-700 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-full shadow whitespace-nowrap"
-      >
-        Create Jobs
-      </button>
-    </div>
-  </header>
-</div>
-
-
-     {/* Search Filters */}
-      <SearchFilters onSearch={handleSearch} />
-
-      {/* Job Form Dialog */}
-      <Dialog open={showForm} onOpenChange={setShowForm}>
-  <DialogContent className="!w-full !max-w-3xl sm:p-6 p-4">
-    <DialogTitle className="text-center text-xl font-semibold">Create Job Opening</DialogTitle>
-
-    {/* Scrollable container */}
-    <div className="max-h-[80vh] overflow-y-auto mt-4 pr-2">
-      <JobForm onSubmit={handleJobSubmit} />
-    </div>
-  </DialogContent>
-</Dialog>
-
-
-      {/* Jobs Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-8">
-        {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
-          </div>
-        ) : filteredJobs.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">No jobs found matching your criteria</p>
-            <Button
-              onClick={() => setFilteredJobs(jobs)}
-              className="mt-4 bg-purple-600 hover:bg-purple-700"
+        {/* Navigation */}
+        <nav className="flex-1 flex justify-center flex-wrap gap-2">
+          {["Home", "Find Jobs", "Find Talents", "About us", "Testimonials"].map((item) => (
+            <button
+              key={item}
+              className="group relative px-4 py-2 font-medium text-gray-800 text-sm transition-all"
             >
-              Back to Home
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredJobs.map((job, index) => (
-              <JobCard key={`${job.company}-${job.title}-${index}`} job={job} />
-            ))}
-          </div>
-        )}
-      </section>
+              <span className="absolute inset-0 z-0 translate-y-[-6px] scale-95 opacity-0 rounded-xl bg-white shadow-lg transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100" />
+              <span className="relative z-10 group-hover:translate-y-1 group-hover:text-black transition-all">
+                {item}
+              </span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Create Job Button */}
+        <div className="flex justify-end">
+          <button
+            onClick={() => setShowForm(true)}
+            className="bg-purple-700 hover:bg-purple-800 text-white font-medium px-5 py-2 rounded-full shadow text-sm sm:text-base whitespace-nowrap"
+          >
+            Create Jobs
+          </button>
+        </div>
+      </div>
+    </header>
+
+    {/* Search Filters */}
+    <div className="px-4 sm:px-6 py-4">
+      <SearchFilters onSearch={handleSearch} />
     </div>
-  );
+
+    {/* Job Form Dialog */}
+    <Dialog open={showForm} onOpenChange={setShowForm}>
+      <DialogContent className="!w-full !max-w-3xl sm:p-6 p-4">
+        <DialogTitle className="text-center text-xl font-semibold">Create Job Opening</DialogTitle>
+        <div className="max-h-[80vh] overflow-y-auto mt-4 pr-2">
+          <JobForm onSubmit={handleJobSubmit} />
+        </div>
+      </DialogContent>
+    </Dialog>
+
+    {/* Job Grid Section */}
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      {loading ? (
+        <div className="flex items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        </div>
+      ) : filteredJobs.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="text-gray-500 text-lg">No jobs found matching your criteria</p>
+          <Button
+            onClick={() => setFilteredJobs(jobs)}
+            className="mt-4 bg-purple-600 hover:bg-purple-700"
+          >
+            Back to Home
+          </Button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredJobs.map((job, index) => (
+            <JobCard key={`${job.company}-${job.title}-${index}`} job={job} />
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+);
+
 }
