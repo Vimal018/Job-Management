@@ -9,7 +9,5 @@ export const jobFormSchema = z.object({
   salaryMin: z.number().min(0),
   salaryMax: z.number().min(0),
   applicationDeadline: z.string(), // ISO date string
-  description: z.string().min(10, "Description too short"),
-  requirements: z.string().min(10, "Requirements too short"),
-  responsibilities: z.string().min(10, "Responsibilities too short"),
+  description: z.string().min(10, "Description too short")
 });

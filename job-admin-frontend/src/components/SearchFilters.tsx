@@ -24,7 +24,7 @@ interface SearchFiltersProps {
 }
 
 // Set to full range to show all jobs by default
-const DEFAULT_SALARY_RANGE = [10, 150];
+const DEFAULT_SALARY_RANGE = [50, 80];
 
 export default function SearchFilters({ onSearch }: SearchFiltersProps) {
   const [searchTitle, setSearchTitle] = useState("");
@@ -92,7 +92,7 @@ return (
               placeholder="Search By Job Title, Role"
               value={searchTitle}
               onChange={(e) => setSearchTitle(e.target.value)}
-              className="pl-12 h-14 border-0 bg-transparent text-gray-900 placeholder:text-gray-500 focus:ring-0 focus:border-0 rounded-xl"
+              className="pl-12 h-14 border-0 bg-transparent text-gray-900 placeholder:text-[#686868] focus:ring-0 focus:border-0 rounded-xl"
             />
           </div>
 
@@ -106,7 +106,7 @@ return (
               placeholder="Preferred Location"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="pl-12 h-14 border-0 bg-transparent text-gray-900 placeholder:text-gray-500 focus:ring-0 focus:border-0 rounded-xl"
+              className="pl-12 h-14 border-0 bg-transparent text-gray-900 placeholder:text-[#686868] focus:ring-0 focus:border-0 rounded-xl"
             />
           </div>
 
@@ -119,7 +119,7 @@ return (
               value={jobType}
               onValueChange={(value) => setJobType(value)}
             >
-              <SelectTrigger className="pl-12 h-14 border-0 bg-transparent text-gray-900 focus:ring-0 focus:border-0 rounded-xl">
+              <SelectTrigger className="pl-12 h-6 border-0 bg-transparent text-gray-900 focus:ring-0 focus:border-0 rounded-xl">
                 <SelectValue placeholder="Job type" />
               </SelectTrigger>
               <SelectContent>
@@ -134,7 +134,7 @@ return (
           {/* Salary Range */}
           <div className="relative border-l border-gray-200 px-4 py-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600 text-sm font-medium">
+              <span className="text-[#222222] text-sm font-medium">
                 Salary Per Month
               </span>
               <span className="text-gray-900 font-semibold text-sm">

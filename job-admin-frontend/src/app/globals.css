@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+input:-webkit-autofill {
+  background-color: white !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: #222222 !important;
+}
+
